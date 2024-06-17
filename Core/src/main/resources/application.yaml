@@ -1,0 +1,38 @@
+app:
+  topic: mail
+  security:
+    jwt:
+
+      secret-key: #добавьте как переменную окружения, можете взять ключ представленный ниже
+      #eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
+      expiration-time: # например можно взять это 40000000
+  file:
+    storage:
+      path: #local path
+      type: disk #cloud вариативная переменная, но лучше локально)
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+
+  datasource:
+    #задайте свои найствроки для бд, не убирал тк почти ничего исправлять не нужно
+    url: jdbc:postgresql://localhost:5432/my_database
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    org.project.core.configuration: INFO
+
+server:
+  port: 8080
+
+yandex:
+  cloud:
+    uploadUrl: https://cloud-api.yandex.net/v1/disk/resources/upload
+    downloadUrl: https://cloud-api.yandex.net/v1/disk/resources/download
+    token: #YCN85IYZfjUPtiBHISQ4Evh2XaOk5od6BUohvHp9
